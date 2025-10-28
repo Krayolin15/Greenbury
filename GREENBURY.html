@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenbury Secondary School - Strive Seek Find</title>
+    <style>
+        /* CSS will go here (for simplicity) or in a separate file (style.css) */
+        /* See Section 2 below for the full CSS code. */
+        :root {
+            --primary-color: #2e8b57; /* Sea Green/Dark Green from Logo */
+            --secondary-color: #a52a2a; /* Red/Brown from Logo */
+            --light-bg: #f5f5f5;
+            --dark-text: #333;
+            --white-text: #fff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--white-text);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-area img {
+            height: 60px; /* Placeholder size for the logo */
+            margin-right: 15px;
+        }
+
+        .logo-text h1 {
+            margin: 0;
+            font-size: 1.8em;
+            color: var(--white-text);
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links a {
+            color: var(--white-text);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        #hero {
+            background: url('') no-repeat center center/cover;
+            color: var(--white-text);
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h2 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            font-style: italic;
+            border-bottom: 2px solid var(--secondary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        section {
+            padding: 40px 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 10px auto 0;
+        }
+
+        .two-column {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .col-half {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--white-text);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+            background-color: var(--secondary-color);
+            color: var(--white-text);
+            border-radius: 8px;
+        }
+
+        .stat-item h3 {
+            margin: 0 0 5px 0;
+            font-size: 2em;
+        }
+
+        .stat-item p {
+            margin: 0;
+            font-size: 1.1em;
+        }
+
+        .fee-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .fee-table th, .fee-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .fee-table th {
+            background-color: var(--primary-color);
+            color: var(--white-text);
+        }
+
+        .fee-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        
+        .contact-info strong {
+            color: var(--secondary-color);
+        }
+
+        footer {
+            background-color: var(--dark-text);
+            color: var(--white-text);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        .subject-list {
+            list-style-type: none;
+            padding: 0;
+            column-count: 2;
+            column-gap: 30px;
+        }
+
+        .subject-list li {
+            padding: 5px 0;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            .nav-links {
+                margin-top: 10px;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+            .nav-links a {
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .hero-content h2 {
+                font-size: 2.5em;
+            }
+            .hero-content p {
+                font-size: 1.2em;
+            }
+            .two-column {
+                flex-direction: column;
+            }
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+            .subject-list {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container navbar">
+            <div class="logo-area">
+                <img src="https://www.mycomlink.co.za/img/0/413/f600n.jpg" alt="Greenbury Secondary School Logo" title=""> 
+                <div class="logo-text">
+                    <h1>GREENBURY SECONDARY SCHOOL</h1>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="#fees">Fees & Admissions</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h2>Cultivating Excellence in Phoenix</h2>
+            <p>Strive Seek Find</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>🏫 Our School & Vision</h2>
+            <div class="two-column">
+                <div class="col-half">
+                    <h3>Welcome to Greenbury Secondary</h3>
+                    <p>Greenbury Secondary School is a proud public secondary school (Grades 8-12)** located at 1 Greenbury Phoenix Drive, Durban, KwaZulu-Natal**. We operate as a Quintile 4 fee-paying school under the Pinetown Education District, committed to providing quality, CAPS-aligned education that equips learners for the National Senior Certificate (NSC) and beyond.</p>
+                    <p>led by our former late Principal Mr H.Ramnarain and strive to foster a holistic environment where learners can truly <strong>strive, seek, and find</strong> their potential.</p>
+                </div>
+                <div class="col-half">
+                    <h3>School Statistics (2023 Survey)</h3>
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <h3>1386+</h3>
+                            <p>Learners</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>51</h3>
+                            <p>Dedicated Educators</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>27:1</h3>
+                            <p>Student-Teacher Ratio</p>
+                        </div>
+                    </div>
+                    <p style="text-align: center; margin-top: 20px;">We boast a **strong academic history**, particularly in **Mathematics and Physical Sciences**.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <hr>
+
+    <section id="academics">
+        <div class="container">
+            <h2>📚 Curriculum and Subjects</h2>
+            <div class="two-column">
+                <div class="col-half">
+                    <h3>Senior Phase (Grades 8–9)</h3>
+                    <ul class="subject-list">
+                        <li>English Home Language</li>
+                        <li>Afrikaans First Additional Language</li>
+                        <li>Mathematics</li>
+                        <li>Natural Sciences</li>
+                        <li>Social Sciences</li>
+                        <li>EMS (Economic and Management Sciences)</li>
+                        <li>Technology</li>
+                        <li>Life Orientation</li>
+                        <li>Creative Arts</li>
+                    </ul>
+                </div>
+                <div class="col-half">
+                    <h3>FET Phase (Grades 10–12)</h3>
+                    <p>Learners prepare for the **NSC** with a mix of compulsory and elective subjects:</p>
+                    <strong>Compulsory:</strong>
+                    <ul>
+                        <li>English Home Language</li>
+                        <li>Afrikaans or isiZulu First Additional Language</li>
+                        <li>Mathematics or Mathematical Literacy</li>
+                        <li>Life Orientation</li>
+                    </ul>
+                    <strong>Electives (Based on Stream):</strong>
+                    <ul class="subject-list">
+                        <li>Physical Sciences</li>
+                        <li>Life Sciences</li>
+                        <li>Accounting</li>
+                        <li>Business Studies</li>
+                        <li>Geography</li>
+                        <li>Engineering Graphics and Design</li>
+                        <li>Tourism</li>
+                        <li>Information Technology</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3 style="text-align:center; margin-top: 40px; color: var(--primary-color);">Extra-Mural Activities</h3>
+            <p style="text-align:center;">We encourage holistic development through activities like Soccer, Athletics, Netball, and Speech.</p>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="fees">
+        <div class="container">
+            <h2>💳 Admissions & School Fees</h2>
+            <div class="two-column">
+                <div class="col-half">
+                    <h3>Admissions Process (Grade 8 for 2026)</h3>
+                    <p>Applications for Greenbury Secondary School are generally handled **directly at the school** rather than exclusively via the provincial online system. We advise parents to visit the school during the admission period, typically **May to July** of the preceding year (e.g., May–July 2025 for 2026 Grade 8 entry).</p>
+                    <h4>Required Documents:</h4>
+                    <ul>
+                        <li>Learner's **Birth Certificate**</li>
+                        <li>Parent/Guardian **ID Copies**</li>
+                        <li>**Proof of Residence**</li>
+                        <li>Learner's **Grade 7 Latest Report**</li>
+                    </ul>
+                    <p>For guidance, please contact our Provincial Learner Admissions Coordinators or the school office.</p>
+                </div>
+                <div class="col-half">
+                    <h3>School Fees</h3>
+                    <p>Greenbury Secondary is a **public, fee-paying school** classified as **Quintile 4**. Fees cover operational expenses and are lower than private schools due to partial government funding (approx. R803 per learner subsidy).</p>
+                    
+                    <table class="fee-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Estimated Amount (2026)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Annual School Fees</td>
+                                <td>**± R3,800 – R5,500** per learner</td>
+                            </tr>
+                            <tr>
+                                <td>Payment Options</td>
+                                <td>Once-off or Monthly Instalments</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top: 15px;">**Fee Exemptions** are available for qualifying learners. Please contact the school **bursar** for details and application forms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="contact">
+        <div class="container contact-info">
+            <h2>📞 Contact Us</h2>
+            <p>Reach out to us for detailed uniform policies, fee structures, or the latest admission updates.</p>
+            <p><strong>Principal:</strong> Mr R. Ramlugan</p>
+            <p><strong>Address:</strong> 1 Greenbury Phoenix Drive, Greenbury, Durban, 4068</p>
+            <p><strong>Telephone:</strong> (+27) 031 539 1810</p>
+            <p><strong>Email:</strong> admin@greenburysecondary.co.za</p>
+            <p><strong>Postal Address:</strong> P.O.Box 207, Mountedgecombe, 4300</p>
+            <p><strong>EMIS Number:</strong> 500151700</p>
+            <div style="text-align: center; margin-top: 30px;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3460.672052446973!2d30.9823675!3d-29.7042851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7b539828236a5%3A0xc6a82c44810795c6!2sGreenbury%20Secondary%20School!5e0!3m2!1sen!2sza!4v1700000000000!5m2!1sen!2sza" width="600" height="450" style="border:0; max-width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Greenbury Secondary School | **Strive Seek Find**</p>
+        </div>
+    </footer>
+
+</body>
+</html>
